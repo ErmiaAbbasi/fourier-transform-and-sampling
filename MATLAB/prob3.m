@@ -1,0 +1,13 @@
+N = 512;
+[X,Y] = meshgrid(linspace(-1,1,N),linspace(-1,1,N));
+R_sq = X.^2 + Y.^2;
+original_img =cos(150 * R_sq);
+imshow(original_img);
+title('Original Signal (512x512)');
+downsample_factor = 5;
+resized_img = original_img(1:downsample_factor:end, 1:downsample_factor:end);
+imshow(resized_img);
+sigma = 3;
+filtered_img = imgaussfilt(original_img, sigma);
+resized_img_aa = filtered_img(1:downsample_factor:end, 1:downsample_factor:end);
+imshow(resized_img_aa,[]);
